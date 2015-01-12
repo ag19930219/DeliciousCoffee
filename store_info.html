@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <link rel="stylesheet" href="agriculture.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+  <title>店家資訊</title>
+  </head>
+<script type="text/javascript">
+  var Nurl = location.href;
+  var temp = Nurl.split("?");
+  var vars = temp[1];
+  var Xurl = "http://data.coa.gov.tw/Service/OpenData/FoodData.aspx?$format=json&$filter=id+like+"+vars;
+  $.ajax({
+  url: Xurl,
+  type: "GET",
+  dataType: "json",
+  success: function(Jdata) {
+    //console.log(Jdata);
+    //alert("SUCCESS!!!");
+    var title; //店名
+    var Description; //店家描述
+      Description = $("div.discribe p");   //指定標籤
+      Description.append(Jdata[0].Description);       //在該標籤中加入文字
+    var menu;  //菜單
+      menu= $("div.left div.menu p"); 
+      menu.append(Jdata[0].price); 
+    var phone;  //電話
+      phone= $("div.right div.phone div.text"); 
+      phone.append(Jdata[0].phone); 
+    var address;  //地址
+      $("div.right a.map").attr({
+        href: "map.html?"+encodeURIComponent(Jdata[0].address)    
+        });     //在該標籤中，賦予他href的值                                                        
+    var business_hrs;  //營業時間
+      business_hrs= $("div.right div.time div.text"); 
+      business_hrs.append(Jdata[0].business_hrs); 
+  }
+});
+</script>
+  <body>
+    
+    <div class="wrap">
+		<div class="banner">
+			<div class="back">
+				<a onClick="javascript:history.back(1)"><img src="img/back.png"></a>
+			</div>
+			<div class="home">
+				<a href="index.html"><img src="img/home.png"></a>
+			</div>
+		</div>
+		<div class="top">
+			<div class="frame"></div>	
+		</div>
+      <div class="content2" style="text-align:center;">
+				<div class="discribe" ><p></p></div>
+				<div class="left">
+					<div class="menu">
+            <p></p>
+          </div>
+				</div>
+				<div class="right">
+					<div class="time">
+            <div class="text">
+              
+            </div>
+          </div>
+					<a class="map" href=""></a>
+					<div class="phone">
+            <div class="text">
+              
+            </div>
+          </div>
+				</div>
+			</div>
+		<div class="clear"></div>
+	</div>
+  </body>
+</html>

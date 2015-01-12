@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="jquery-tablepage-1.0.js"></script>
+  <link rel="stylesheet" href="agriculture.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+  <title>Shake檢索</title>
+  </head>
+<script type="text/javascript">
+  var Nurl = location.href;         //讀取目前網址
+  var temp = Nurl.split("?");        //將網址”?”移除並切割
+  var vars = temp[1];                  //此為問號後的變數
+  var Xurl = "http://data.coa.gov.tw/Service/OpenData/FoodData.aspx?$format=json&$filter=address+like+"+vars;        //因為shake是傳使用者所在區域回來，所以用address+like+區域名稱為篩選條件
+  $.ajax({
+  url: Xurl,
+  type: "GET",
+  dataType: "json",
+  success: function (Jdata) {      //抓回來的資料會存在Jdata陣列中
+      //資料裡面有甚麼可以直接參考農委會的API介接說明書，或者觀看JSON碼裡面的資料
+      //console.log(Jdata);
+      //alert("SUCCESS!!!");
+      var tr;                      
+      for (var i = 0; i < Jdata.length; i++) {
+          tr = $('<tr/>');          //宣告要針對哪個標籤進行動作
+          tr.append("<td><a href='store_info.html?" + Jdata[i].id + "'>" + Jdata[i].title + "</td></a>");     //置入商店名稱，並給予超連結，URL的尾巴放入商家的ID提供store_info.html辨識
+          tr.append("<td>" + Jdata[i].phone + "</td>");  //置入電話資料
+          $('#tb-border').append(tr);                //給予該列表格結尾
+          $("#tb-border").tablepage($("#table_page"), 10);   //超過十筆資料即產生分頁功能，需先引入jquery-tablepage-1.0.js
+      }
+  }
+});
+</script>
+  <body>
+  <div class="wrap">
+		<div class="banner">
+			<div class="back">
+				<a onClick="javascript:history.back(1)"><img src="img/back.png"></a>
+			</div>
+			<div class="home">
+				<a href="index.html"><img src="img/home.png"></a>
+			</div>
+		</div>
+		<div class="top">
+			<div class="frame"></div>	
+		</div>
+			<div class="content" style="text-align:center;">
+				 <table id='tb-border'>
+		 			<caption><font style="text-shadow:3px 3px 3px #cccccc;">以下是您Shake後的結果</font>：</caption>
+		 			<thead>
+     				<tr>
+		       			<th>店名</th>
+		       			<th>電話</th>
+     				</tr>
+     				</thead>
+     			</table>	
+			</div>
+		<div class="clear"></div>
+	</div>
+  </body>
+</html>

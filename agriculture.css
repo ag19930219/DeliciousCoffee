@@ -1,0 +1,263 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+
+.wrap{
+  width: 100%;
+  background:url(img/bg.png) repeat; 
+}
+.banner{
+	height: 80px;
+	width: 100%;
+	background-color: #FFEC8B;
+  float: left;
+}
+.top{
+  width: 100%;
+  height: 200px;
+  margin: 0 auto;
+  padding: 0 auto;
+  float: left;
+}
+.content{
+  width: 100%;
+	display: block;
+  float: left;
+	font-family: 微軟正黑體;
+	text-align:center;
+  margin: 0 auto;
+}
+table {
+  border-spacing: 0;
+  margin:0 auto;
+}
+#tb-border {
+  float: center;
+  margin: 0 auto;
+}
+#tb-border caption {
+  width: 100%;
+	font-size: 120%;
+	font-weight: bold;
+	color: #990000;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+#tb-border th {
+	font-size: 100%;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	padding: 2%;
+	margin: 10%;
+	background-color: #642100;
+}
+#tb-border td {
+	text-align: center;
+	padding: 0.625rem;
+	margin: 10%;
+	border-bottom: 0.0625rem solid  #bbb;
+}
+#tb-border td a{
+  	text-decoration:none;
+  	color: black;
+}
+#tb-border td a:hover{
+  	color:#000000;
+  	text-decoration:none;
+  	font-weight: bold;
+}
+
+.back{
+	height: 12%;
+	width: 30%;
+	display: block;
+  float: left;
+}
+.back img{
+    width: 65px;
+  	height: 65px;
+  	padding: 3%;
+  	float: left;
+}
+.home{
+	height: 12%;
+	width: 30%;
+	display: block;
+  	float: right;
+}
+.home img{
+  	width: 65px;
+  	height: 65px;
+  	padding: 3%;
+  	float: right;
+}
+
+.frame{
+  width: 100%;
+	height: 100%;
+	background:url(img/bigtitle_word.png) no-repeat;
+	background-size:90% 90%;
+	background-position:center;
+	margin: 0% auto;
+ }
+.content2{
+	font-family: 微軟正黑體;
+	margin:0 auto;
+	text-align:center;
+	display: block;
+  float: left;
+}
+.discribe{
+  width: 100%;
+  display: block;
+  float: left;
+  background: url(img/discribe.png) no-repeat;
+  background-size:100% 100%;
+ }
+.discribe p{
+  color:black;
+  padding:6.25rem;
+  display: block;
+  font-weight: bold;
+  text-decoration:none;	
+  font-size:100%;
+  letter-spacing: 5px;
+  line-height: 120%;
+  text-align: left;
+  float: left;
+  margin: 0% auto;
+}
+.left{
+	width: 60%;
+	height: 400px;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 5%;
+}
+.menu{
+  width:100%;
+  height: 100%;
+  background: url(img/menu.png) no-repeat;
+  background-size:100% 100%;
+  float: left;
+ }
+.menu p{
+  color:black;
+  font-weight: bold;
+  text-decoration:none;	
+  font-size:100%;
+  letter-spacing: 5px;
+  line-height: 100%;
+  text-align: left;
+  width:80%;
+  height:290px;
+  margin-top:100px;
+  margin-left:10%;
+  background: rgba(100%,100%,100%,0.6);
+  float: left; 
+}
+.right{
+  margin-right: 5%;
+  margin-top: 10px;
+	width: 30%;
+	height: 400px;
+  float: right;
+
+}
+.time{
+	width: 100%;
+	height: 30%;
+  display: block;
+  float: right;
+  background: url(img/time.png) no-repeat;
+  background-size:100% 100%;	 
+}
+.time .text{
+  color:black;
+  font-weight: bold;
+  text-decoration:none;	
+  font-size:50%;
+  letter-spacing: 5px;
+  line-height: 100%;
+  text-align: left;
+  width:80%;
+  height:80px;
+  margin-top:30px;
+  margin-left:10%;
+  background: rgba(100%,100%,100%,0.6);
+  float: left; 
+}
+.map{
+	width: 100%;
+	height: 30%;
+  display: block;
+  margin-top: 20px;
+  float: right;
+  background: url(img/map.png) no-repeat;
+  background-size:100% 100%;
+ }
+.phone{
+  width: 100%;
+	height: 30%;
+  display: block;
+  margin-top: 20px;
+  float: right;
+  background: url(img/phone.png) no-repeat;
+  background-size:100% 100%;
+ }
+.phone .text{
+  color:black;
+  font-weight: bold;
+  text-decoration:none;	
+  font-size:50%;
+  letter-spacing: 5px;
+  line-height: 100%;
+  text-align: left;
+  width:80%;
+  height:80px;
+  margin-top:30px;
+  margin-left:10%;
+  background: rgba(100%,100%,100%,0.6);
+  float: left; 
+}
+.clear{
+  clear:both;
+}

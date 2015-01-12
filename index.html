@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <link rel="stylesheet" href="all.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+</head>
+<script type="text/javascript" charset="utf-8">
+/*
+//要先引入cordova.js
+    // The watch id references the current `watchAcceleration`
+    var watchID = null;           //先宣告一個變數，並把值設為NULL
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);        //用這行把裝置的監聽功能打開，並執行下面的function
+
+    // device APIs are available
+    //
+    function onDeviceReady() {         //如果裝置已經準備好
+        startWatch();
+    }
+
+    // Start watching the acceleration
+    //
+    function startWatch() {
+        var options = { frequency: 200 };       //監聽頻率 單位為毫秒
+        watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);     如果監聽成功、失敗與監聽頻率
+    }
+    var tempValue = {           //宣告一個新的陣列，並給予x,y,z項目的值為NULL
+        x: null,
+        y: null,
+        z: null
+    };
+    // onSuccess: Get a snapshot of the current acceleration
+    //
+    var shakeFlag = 0;          //宣告一個變數給下面用
+    function onSuccess(acceleration) {                            //如果剛剛監聽成功，資料會放進acceleration這個陣列中
+        var xvalue = Math.abs(acceleration.x - tempValue.x);      //計算這次的移動跟上一次移動的差距
+        var yvalue = Math.abs(acceleration.y - tempValue.y);
+        var zvalue = Math.abs(acceleration.z - tempValue.z);
+        if (xvalue > 5 || yvalue > 5 || zvalue > 5) {         //如果移動差距大於5
+            tempValue.x = acceleration.x;                //把當前的移動存起來
+            tempValue.y = acceleration.y;
+            tempValue.z = acceleration.z;
+            shakeFlag++;                                 //移動次數加一次
+            if (shakeFlag > 10) {                        //如果移動超過十次
+                shakeFlag = 0;                           //先把移動次數再次歸零
+                navigator.geolocation.getCurrentPosition(onSuccess, onError);        //抓目前所在的位置
+                function onSuccess(position) {                                       //如果成功的話，資料會放在position中
+                    var latitude = position.coords.latitude;                         //經度
+                    var longitude = position.coords.longitude;                       //緯度
+                    var googleapi = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&sensor=true";     //把經緯度丟給GOOGLE MAP API進行轉換
+                    $.getJSON(googleapi, function () {                //轉換出的地址格式會是JSON
+                        format: "json"
+                    }).done(function (data) {                          //地址存在data中
+                        alert(data.results[0].address_components[3].long_name+' 附近美食查詢！！');           //提示使用者接下來進入使用者所在地區的美食搜索
+                        window.location.href = 'shake_list.html?' + data.results[0].address_components[3].long_name;                    //跳轉到shake_list.html頁面，並用URL傳區域過去
+                    })
+
+                }
+            }
+        }
+    }
+    function onError(){
+    }
+*/
+</script>
+
+<body>
+	<div class="wrap">
+		<div class="logo"></div>
+		<div class="search"><h1>店名關鍵字搜尋</h1>
+			<form action="search_list.html">
+			 <input class="putin" type="text" name="text" style="font-size:38px;	font-family: Microsoft JhengHei,Arial;" size="40" maxlength="120">
+       <input class="submit" type="submit" value="search" >
+		  </form>
+		</div>
+		<div class="choose"><h1>請選擇地區</h1>
+	  <form>
+    <select name="choice">
+ 			<option selected value="A">台北市</option>
+			<option value="F">新北市</option>
+			<option value="H">桃園市</option>
+			<option value="B">臺中市</option>
+			<option value="D">臺南市</option>
+			<option value="E">高雄市</option>
+			<option value="C">基隆市</option>
+			<option value="J">新竹縣</option>
+			<option value="O">新竹市</option>
+			<option value="Q">嘉義縣</option>
+			<option value="I">嘉義市</option>		
+			<option value="K">苗栗縣</option>
+			<option value="N">彰化縣</option>
+			<option value="M">南投縣</option>
+			<option value="P">雲林縣</option>
+			<option value="T">屏東縣</option>
+			<option value="G">宜蘭縣</option>
+			<option value="U">花蓮縣</option>
+			<option value="V">臺東縣</option>
+			<option value="X">澎湖縣</option>
+			<option value="W">金門縣</option>
+			<option value="Z">連江縣</option>
+		</select>
+    <input class="button" type="button" value="GO!" onclick='location.href="list.html?"+(this.form.choice.options[this.form.choice.selectedIndex].value)'>
+    
+    </form>
+    </div>
+	</div>
+</body>
+</html>
