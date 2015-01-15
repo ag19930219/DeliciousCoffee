@@ -7,15 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" />
 </head>
 <script type="text/javascript" charset="utf-8">
-/*
-//要先引入cordova.js
+    //需先引入cordova.js與jQuery
     // The watch id references the current `watchAcceleration`
     var watchID = null;           //先宣告一個變數，並把值設為NULL
 
     // Wait for device API libraries to load
     //
-    document.addEventListener("deviceready", onDeviceReady, false);        //用這行把裝置的監聽功能打開，並執行下面的function
-
+    function shake(){                 //SHAKE按鈕觸發的事件
+      $("#shake").slideUp();          //按鈕消失
+      $("#shaketext").fadeIn();       //文字出現
+      document.addEventListener("deviceready", onDeviceReady, false);     //用這行把裝置的監聽功能打開，並執行下面的function  
+    }
     // device APIs are available
     //
     function onDeviceReady() {         //如果裝置已經準備好
@@ -26,7 +28,7 @@
     //
     function startWatch() {
         var options = { frequency: 200 };       //監聽頻率 單位為毫秒
-        watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);     如果監聽成功、失敗與監聽頻率
+        watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);     //如果監聽成功、失敗與監聽頻率
     }
     var tempValue = {           //宣告一個新的陣列，並給予x,y,z項目的值為NULL
         x: null,
@@ -60,12 +62,14 @@
                     })
 
                 }
+                function onError(){                   //如果GPS抓取失敗的話，通常是因為GPS定位未開啟
+                  alert("請先打開GPS定位！");
+                }
             }
         }
     }
     function onError(){
     }
-*/
 </script>
 
 <body>
@@ -106,7 +110,10 @@
     <input class="button" type="button" value="GO!" onclick='location.href="list.html?"+(this.form.choice.options[this.form.choice.selectedIndex].value)'>
     
     </form>
+    <input id="shake" type="button" onclick="shake();">
+    
     </div>
+    <div id="shaketext">手機搖一搖！<br>定位找附近美食！</div>
 	</div>
 </body>
 </html>

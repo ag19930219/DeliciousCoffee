@@ -13,7 +13,7 @@
   var temp = Nurl.split("?");          //將網址”?”移除並切割
   var temp2 = temp[1].split('=');      //將網址”=”移除並切割
   var vars = temp2[1];                 //此為等號後的變數
-  var Xurl = "http://data.coa.gov.tw/Service/OpenData/FoodData.aspx?$format=json&$filter=title+like+"+vars; //因為關鍵字是傳使用者所輸入的資料，所以用title+like+區域名稱為篩選條件
+  var Xurl = "http://data.coa.gov.tw/Service/OpenData/FoodData.aspx?$format=json&$filter=title+like+"+vars+"+or+address+like+"+vars; //因為關鍵字是傳使用者所輸入的資料，所以用title+like+區域名稱為篩選條件
   $.ajax({
   url: Xurl,
   type: "GET",
